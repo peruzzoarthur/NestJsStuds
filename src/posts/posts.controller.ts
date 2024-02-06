@@ -10,6 +10,7 @@ import {
 import { UpdatePostDto } from 'src/posts/dto/update-post.dto';
 import { CreatePostDto } from 'src/posts/dto/create-post.dto';
 import PostsService from './posts.service';
+import FindOneParams from 'src/utils/findOneParams';
 
 @Controller('posts')
 export class PostsController {
@@ -21,7 +22,7 @@ export class PostsController {
   }
 
   @Get(':id')
-  getPostById(@Param('id') id: string) {
+  getPostById(@Param() { id }: FindOneParams) {
     return this.postsService.getPostById(+id);
   }
 
